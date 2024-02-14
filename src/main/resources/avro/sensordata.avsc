@@ -1,0 +1,48 @@
+{
+  "type": "record",
+  "name": "SensorData",
+  "namespace": "com.javanibble.avro",
+  "doc": "Schema representing various types of data collected from sensors.",
+  "fields": [
+    {
+      "name": "sensorId",
+      "type": "string",
+      "doc": "A unique identifier for the sensor."
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Timestamp when the data was collected, in milliseconds since the epoch."
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "doc": "Indicates if the sensor is active."
+    },
+    {
+      "name": "temperature",
+      "type": "float",
+      "doc": "Temperature reading from the sensor in Celsius."
+    },
+    {
+      "name": "humidity",
+      "type": "double",
+      "doc": "Humidity reading from the sensor as a percentage."
+    },
+    {
+      "name": "firmwareVersion",
+      "type": "bytes",
+      "doc": "Binary data representing the sensor's firmware version."
+    },
+    {
+      "name": "statusMessage",
+      "type": "string",
+      "doc": "A textual status message about the sensor."
+    },
+    {
+      "name": "errorCount",
+      "type": "int",
+      "doc": "The number of errors reported by the sensor since last reset."
+    }
+  ]
+}
