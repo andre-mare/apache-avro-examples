@@ -4,20 +4,20 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.javanibble.avro</groupId>
-	<artifactId>apache-avro-examples</artifactId>
+	<artifactId>basic-avro-schema</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Apache Avro Examples</name>
-	<description></description>
+	<name>Example 1: Basic Avro Schema</name>
 
 	<properties>
 		<java.version>17</java.version>
+		<avro.version>1.11.3</avro.version>
 	</properties>
 
 	<dependencies>
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
-            <version>1.11.3</version>
+            <version>${avro.version}</version>
         </dependency>
 	</dependencies>
 
@@ -26,7 +26,7 @@
 			<plugin>
 				<groupId>org.apache.avro</groupId>
 				<artifactId>avro-maven-plugin</artifactId>
-				<version>1.10.2</version>
+				<version>${avro.version}</version>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>

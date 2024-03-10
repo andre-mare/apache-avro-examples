@@ -20,7 +20,7 @@ import java.nio.ByteBuffer;
  * The following class makes use of the instructions found on the Apache Avro Documentation.
  * @See: https://avro.apache.org/docs/1.10.2/gettingstartedjava.html
  */
-public class BasicAvroUsageExamples {
+public class BasicAvroSchemaExamples {
 
     public static SensorData objectCreationType1() {
         SensorData sensorData = new SensorData();
@@ -61,7 +61,7 @@ public class BasicAvroUsageExamples {
 
 
     public static GenericRecord objectCreationType4() throws Exception {
-        InputStream inputStream = BasicAvroUsageExamples.class.getClassLoader().getResourceAsStream("avro/sensordata.avsc");
+        InputStream inputStream = BasicAvroSchemaExamples.class.getClassLoader().getResourceAsStream("avro/sensordata.avsc");
         Schema schema = new Schema.Parser().parse(inputStream);
 
         GenericRecord sensorData = new GenericData.Record(schema);
@@ -100,7 +100,7 @@ public class BasicAvroUsageExamples {
     }
 
     public static void genericRecordSerializing(GenericRecord sensorData) throws Exception {
-        InputStream inputStream = BasicAvroUsageExamples.class.getClassLoader().getResourceAsStream("avro/sensordata.avsc");
+        InputStream inputStream = BasicAvroSchemaExamples.class.getClassLoader().getResourceAsStream("avro/sensordata.avsc");
         Schema schema = new Schema.Parser().parse(inputStream);
         DatumWriter<GenericRecord> datumWriter = new GenericDatumWriter<GenericRecord>(schema);
         DataFileWriter<GenericRecord> dataFileWriter = new DataFileWriter<GenericRecord>(datumWriter);
@@ -111,7 +111,7 @@ public class BasicAvroUsageExamples {
 
 
     public static void genericRecordDeserializing() throws Exception {
-        InputStream inputStream = BasicAvroUsageExamples.class.getClassLoader().getResourceAsStream("avro/sensordata.avsc");
+        InputStream inputStream = BasicAvroSchemaExamples.class.getClassLoader().getResourceAsStream("avro/sensordata.avsc");
         Schema schema = new Schema.Parser().parse(inputStream);
         DatumReader<GenericRecord> datumReader = new GenericDatumReader<GenericRecord>(schema);
         DataFileReader<GenericRecord> dataFileReader = new DataFileReader<GenericRecord>(new File("generic-sensordata.avro"), datumReader);
@@ -125,16 +125,16 @@ public class BasicAvroUsageExamples {
 
 
     public static void main(String[] args) throws Exception {
-        SensorData sensorData1 = BasicAvroUsageExamples.objectCreationType1();
-        SensorData sensorData2 = BasicAvroUsageExamples.objectCreationType2();
-        SensorData sensorData3 = BasicAvroUsageExamples.objectCreationType3();
+        SensorData sensorData1 = BasicAvroSchemaExamples.objectCreationType1();
+        SensorData sensorData2 = BasicAvroSchemaExamples.objectCreationType2();
+        SensorData sensorData3 = BasicAvroSchemaExamples.objectCreationType3();
 
-        BasicAvroUsageExamples.objectSerializing(sensorData1, sensorData2, sensorData3);
-        BasicAvroUsageExamples.objectDeserializing();
+        BasicAvroSchemaExamples.objectSerializing(sensorData1, sensorData2, sensorData3);
+        BasicAvroSchemaExamples.objectDeserializing();
 
-        GenericRecord genericRecord = BasicAvroUsageExamples.objectCreationType4();
-        BasicAvroUsageExamples.genericRecordSerializing(genericRecord);
-        BasicAvroUsageExamples.genericRecordDeserializing();
+        GenericRecord genericRecord = BasicAvroSchemaExamples.objectCreationType4();
+        BasicAvroSchemaExamples.genericRecordSerializing(genericRecord);
+        BasicAvroSchemaExamples.genericRecordDeserializing();
 
     }
 }
