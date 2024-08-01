@@ -1,6 +1,7 @@
-package com.javanibble.avro;
+package com.example.avro;
 
 
+import com.example.avro.SensorData;
 import org.junit.jupiter.api.Test;
 
 import java.nio.ByteBuffer;

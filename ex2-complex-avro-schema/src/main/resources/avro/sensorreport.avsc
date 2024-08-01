@@ -1,0 +1,83 @@
+{
+  "type": "record",
+  "name": "SensorReport",
+  "namespace": "com.example.avro",
+  "doc": "Schema for a comprehensive report of multiple sensors, including metadata and aggregated data.",
+  "fields": [
+    {
+      "name": "reportId",
+      "type": "string",
+      "doc": "A unique identifier for the report."
+    },
+    {
+      "name": "sensorDataList",
+      "type": {
+        "type": "array",
+        "items": "SensorData"
+      },
+      "doc": "A list of SensorData records."
+    },
+    {
+      "name": "sensorStatusSummary",
+      "type": {
+        "type": "map",
+        "values": "int"
+      },
+      "doc": "A map summarizing the number of sensors in each status."
+    },
+    {
+      "name": "reportType",
+      "type": {
+        "type": "enum",
+        "name": "ReportType",
+        "symbols": ["DAILY", "WEEKLY", "MONTHLY", "ANNUAL"],
+        "doc": "The type of the report based on the reporting period."
+      },
+      "doc": "The type of report, indicating the aggregation period."
+    },
+    {
+      "name": "maintenanceSchedule",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "MaintenanceEntry",
+          "fields": [
+            {
+              "name": "sensorId",
+              "type": "string",
+              "doc": "Identifier of the sensor scheduled for maintenance."
+            },
+            {
+              "name": "scheduledDate",
+              "type": "string",
+              "doc": "The date when maintenance is scheduled."
+            }
+          ],
+          "doc": "Maintenance schedule entry for a sensor."
+        }
+      },
+      "default": [],
+      "doc": "List of maintenance entries for sensors."
+    },
+    {
+      "name": "configuration",
+      "type": {
+        "type": "fixed",
+        "name": "ConfigVersion",
+        "size": 16,
+        "doc": "16-byte hash of the sensor configuration version."
+      },
+      "doc": "Fixed-size hash representing the sensor configuration version."
+    },
+    {
+      "name": "metadata",
+      "type": ["null", {
+        "type": "map",
+        "values": "string"
+      }],
+      "default": null,
+      "doc": "Optional metadata about the report, can include any key-value pairs."
+    }
+  ]
+}

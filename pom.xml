@@ -3,13 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.javanibble.avro</groupId>
+	<groupId>com.example.avro</groupId>
 	<artifactId>avro-schema-examples</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Project: Avro Schema Examples.</name>
 
 	<modules>
 		<module>ex1-basic-avro-schema</module>
+		<module>ex2-complex-avro-schema</module>
 	</modules>
 
 	<packaging>pom</packaging>

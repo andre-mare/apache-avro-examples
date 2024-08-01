@@ -9,9 +9,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>basic-avro-schema</artifactId>
+	<artifactId>complex-avro-schema</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Example 1: Basic Avro Schema and Source Generation</name>
+	<name>Example 2: Complex Avro Schema and Source Generation</name>
 
 	<properties>
 		<java.version>21</java.version>
@@ -38,6 +38,9 @@
 				<groupId>org.apache.avro</groupId>
 				<artifactId>avro-maven-plugin</artifactId>
 				<version>${avro.version}</version>
+				<configuration>
+					<stringType>String</stringType>
+				</configuration>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
@@ -46,6 +49,10 @@
 						</goals>
 						<configuration>
 							<sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
+							<imports>
+								<import>${project.basedir}/src/main/resources/avro/sensordata.avsc</import>
+								<import>${project.basedir}/src/main/resources/avro/sensorreport.avsc</import>
+							</imports>
 							<outputDirectory>${project.build.directory}/generated-sources/avro</outputDirectory>
 						</configuration>
 					</execution>
@@ -83,3 +90,4 @@
 	</build>
 
 </project>
+
